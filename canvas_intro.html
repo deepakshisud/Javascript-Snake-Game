@@ -19,11 +19,10 @@
         //  ctx.fillRect(300,400,150,50);  //positon, position, length, height
 
          //state
-
+        ctx.save(); //save state - checkpoint
          ctx.fillStyle = 'red';
-
          ctx.fillRect(200,200,100,100);
-
+        ctx.restore(); //resume the state before save
          ctx.fillText('Bye now',200,400);
 
     </script>
