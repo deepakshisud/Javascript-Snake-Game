@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Inputs!</title>
+    </head>
+    <body>
+        <canvas height="500" width="500" style="border: 2px solid #000000;" id="ctx"></canvas>
+        <script>
+            var ctx = document.getElementById('ctx').getContext('2d');
+
+            //mouse functions 
+
+            document.getElementById('ctx').onmousedown = function() {
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(100,100,50,50);
+            }
+
+            document.getElementById('ctx').onmouseup = function() {
+                ctx.fillStyle = 'red';
+                ctx.fillRect(100,100,50,50);
+            }
+
+            //keyboard functions
+
+            document.onkeydown = function(event) {
+                //ASCII value used
+                if (event.keyCode == 65){
+                    ctx.fillText("A is best",250,300);
+                }
+            }
+        </script>
+    </body>
+</html>
