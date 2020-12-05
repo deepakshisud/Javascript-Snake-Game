@@ -116,6 +116,29 @@
             }
             foodList.forEach(drawFood);
             snakeList.forEach(drawSnake);
+
+            if(testCollision(snakeList[0],foodList[0])) {
+                foodList = [];
+                eaten = true;
+                var new_x, new_y;
+                if(direction === 0){
+                    new_x = snakeList[0].x - 10;
+                    new_y = snakeList[0].y;
+                }
+                if(direction === 1){
+                    new_x = snakeList[0].x;
+                    new_y = snakeList[0].y - 10;
+                }
+                if(direction === 2){
+                    new_x = snakeList[0].x + 10;
+                    new_y = snakeList[0].y;
+                }
+                if(direction === 3){
+                    new_x = snakeList[0].x;
+                    new_y = snakeList[0].y + 10;
+                }
+                snakeList.unshift({x:new_x,y:new_y});
+            }
             checkSnakePosition();
             updateSnakeList();
         }
