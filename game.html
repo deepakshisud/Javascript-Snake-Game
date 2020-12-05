@@ -25,7 +25,7 @@
         var food = {
             width:20,
             height:20,
-            color:'black'
+            color:'violet'
         };
 
         document.onkeydown = function(event) {
@@ -104,7 +104,12 @@
             }
         }
         
-
+        testCollision = function(rect1, rect2){
+            return((rect1.x<=rect2.x+food.width) &&
+                   (rect2.x<=rect1.x+snakeBody.width) &&
+                   (rect1.y<=rect2.y+food.height) &&
+                   (rect2.y<=rect1.y+snakeBody.height) )
+        }
 
         updateSnakePosition = function() {
             ctx.clearRect(0,0,width,height);
