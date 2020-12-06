@@ -13,7 +13,7 @@
 
         var width = 500;
         var height = 500;
-        var snakeList, foodList, direction, eaten, intervalVar, score;
+        var snakeList, foodList, direction, eaten, intervalVar, score, running=false;
         ctx.font = "20px Calibri";
         ctx.fillText("Click me to start the game", 140,250);
 
@@ -28,6 +28,14 @@
             height:20,
             color:'violet'
         };
+
+        document.getElementById('ctx').onmousedown = function() {
+            if(running){
+                clearInterval(intervalVar);
+                running = false;
+            }
+            startGame();
+        }
 
         document.onkeydown = function(event) {
             //0 - Left
@@ -179,6 +187,7 @@
             direction = 99;
             eaten = true;
             score = 0;
+            running = true;
             intervalVar = setInterval(updateSnakePosition,20);
             
         }
@@ -199,8 +208,6 @@
             ctx.fillRect(f.x,f.y,food.width,food.height);
             ctx.restore();
         }
-
-        startGame();
          
     </script>
 </body>
