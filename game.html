@@ -13,7 +13,7 @@
 
         var width = 500;
         var height = 500;
-        var snakeList, foodList, direction, eaten, internalVar;
+        var snakeList, foodList, direction, eaten, intervalVar;
         ctx.font = "20px Calibri";
 
         var snakeBody = {
@@ -111,6 +111,23 @@
                    (rect2.y<=rect1.y+snakeBody.height) )
         }
 
+        testCollisionSnake = function(snake1,snake2) {
+            return((Math.abs(snake1.x-snake2.x)<5) &&
+                   (Math.abs(snake1.y-snake2.y)<5));
+        }
+
+        isGameOver = function() {
+            for( let i in snakeList) {
+                if(i==0){
+                    continue;
+                }
+                if(testCollisionSnake(snakeList[0],snakeList[i])){
+                    clearInterval(intervalVar);
+                    return;
+                }
+            }
+        }
+
         updateSnakePosition = function() {
             ctx.clearRect(0,0,width,height);
             while(eaten){
@@ -147,22 +164,6 @@
             isGameOver();
             checkSnakePosition();
             updateSnakeList();
-        }
-
-        testCollisionSnake = function(snake1,snake2) {
-            return((Math.abs(snake1.x-snake2.x)<5) &&
-                   (Math.abs(snake1.y-snake2.y)<5));
-        }
-
-        isGameOver = function() {
-            for( i in snakeList) {
-                if( i===0)
-                    continue;
-                if(testCollisionSnake(snakeList[0],snakeList[i])){
-                    clearInterval(internalVar);
-                    return;
-                }
-            }
         }
 
         startGame = function() {
