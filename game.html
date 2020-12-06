@@ -132,6 +132,7 @@
                 }
                 if(testCollisionSnake(snakeList[0],snakeList[i])){
                     clearInterval(intervalVar);
+                    ctx.fillText("Game over! Click to restart" , 150, 250 );
                     return;
                 }
             }
